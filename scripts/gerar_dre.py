@@ -1,1 +1,0 @@
-print("✅ Ambiente Python para Projeto DRE configurado com sucesso!")

@@ -2,74 +2,84 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>DRE - Seleção de Período</title>
+    <title>Filtro de Período - DRE</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             background-color: #f4f6f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
         }
         .container {
-            width: 400px;
-            margin: 80px auto;
+            max-width: 500px;
+            margin: 50px auto;
             background-color: #ffffff;
-            padding: 30px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 30px 40px;
             border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         h1 {
             text-align: center;
-            color: #333333;
+            color: #007bff;
         }
         label {
             display: block;
-            margin-top: 15px;
+            margin-bottom: 5px;
             font-weight: bold;
-            color: #555555;
+            color: #333333;
         }
-        input[type="number"], select {
+        input, select {
             width: 100%;
-            padding: 8px;
-            margin-top: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
             border: 1px solid #cccccc;
             border-radius: 4px;
         }
-        input[type="submit"] {
+        button {
             width: 100%;
-            margin-top: 20px;
-            padding: 10px;
+            padding: 12px;
             background-color: #007bff;
-            color: #ffffff;
+            color: white;
             border: none;
             border-radius: 4px;
-            cursor: pointer;
             font-weight: bold;
+            cursor: pointer;
         }
-        input[type="submit"]:hover {
+        button:hover {
             background-color: #0056b3;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777777;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>Filtro de Período - DRE</h1>
-        <form method="POST">
+        <form action="/dre_resultado" method="POST">
             <label for="ano">Ano:</label>
-            <input type="number" name="ano" value="2024" required>
+            <input type="number" name="ano" placeholder="Ex: 2024" required>
 
             <label for="mes">Mês:</label>
-            <input type="number" name="mes" min="1" max="12" value="1" required>
+            <input type="number" name="mes" min="1" max="12" placeholder="1 a 12" required>
 
-            <label for="nivel">Nível:</label>
-            <select name="nivel">
-                <option value="1">Nível 1 - Totalizadores</option>
-                <option value="2">Nível 2 - Detalhado</option>
-                <option value="0">Todos os níveis</option>
+            <label for="nivel">Nível de Detalhe:</label>
+            <select name="nivel" required>
+                <option value="1">Nível 1 (Totalizadores)</option>
+                <option value="2">Nível 2 (Detalhado)</option>
+                <option value="0">Todos</option>
             </select>
 
-            <input type="submit" value="Gerar DRE">
+            <button type="submit">📊 Gerar DRE</button>
         </form>
+        <div class="footer">
+            Sistema DRE Python - Automações | {{ datetime }}
+        </div>
     </div>
+
 </body>
 </html>

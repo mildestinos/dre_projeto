@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>DRE Consolidada Anual</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f8; padding: 20px; }
+        h1 { text-align: center; color: #007bff; }
+        form { text-align: center; margin-bottom: 20px; }
+        select, button { padding: 8px 12px; margin-right: 10px; }
+        table { width: 100%; border-collapse: collapse; background-color: white; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: right; }
+        th { background-color: #007bff; color: white; }
+        td.conta { text-align: left; font-weight: bold; }
+        .container { max-width: 1200px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); padding: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DRE Consolidada - Anual por Mês</h1>
+
+        <form method="POST">
+            <label for="ano">Selecionar Ano:</label>
+            <select name="ano" required>
+                {% for a in anos %}
+                    <option value="{{ a }}" {% if ano == a %}selected{% endif %}>{{ a }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Gerar DRE Anual</button>
+        </form>
+
+        {% if colunas %}
+        <table>
+            <tr>
+                {% for col in colunas %}
+                    <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+            {% for linha in linhas %}
+            <tr>
+                <td class="conta">{{ linha['Conta'] }}</td>
+                {% for col in colunas[1:] %}
+                    <td>{{ "{:,.2f}".format(linha[col]).replace(",", "X").replace(".", ",").replace("X", ".") }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>
