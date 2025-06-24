@@ -1,0 +1,18 @@
+Ano,Mês,Código_Conta,Conta,Grupo_Pai,Nível,Valor
+2024,2,1,Receita Bruta,,1,920000
+2024,2,1.01,Receita Produto A,1,2,620000
+2024,2,1.02,Receita Produto B,1,2,300000
+2024,2,1.99,Deduções,1,2,-153000
+2024,2,2,Receita Líquida,,1,767000
+2024,2,2.01,CMV Produto A,2,2,-310000
+2024,2,2.02,CMV Produto B,2,2,-155000
+2024,2,3,Lucro Bruto,,1,302000
+2024,2,3.01,Despesas Operacionais,3,2,-105000
+2024,2,4,EBITDA,,1,197000
+2024,2,4.01,Depreciação e Amortização,4,2,-26000
+2024,2,5,EBIT,,1,171000
+2024,2,5.01,Despesas Financeiras,5,2,-16000
+2024,2,5.02,Receitas Financeiras,5,2,5200
+2024,2,6,LAIR,,1,160200
+2024,2,6.01,Imposto de Renda / Contribuição,6,2,-51000
+2024,2,7,Lucro Líquido,,1,109200

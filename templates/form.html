@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>DRE - Seleção de Período</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 400px;
+            margin: 80px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #555555;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Filtro de Período - DRE</h1>
+        <form method="POST">
+            <label for="ano">Ano:</label>
+            <input type="number" name="ano" value="2024" required>
+
+            <label for="mes">Mês:</label>
+            <input type="number" name="mes" min="1" max="12" value="1" required>
+
+            <label for="nivel">Nível:</label>
+            <select name="nivel">
+                <option value="1">Nível 1 - Totalizadores</option>
+                <option value="2">Nível 2 - Detalhado</option>
+                <option value="0">Todos os níveis</option>
+            </select>
+
+            <input type="submit" value="Gerar DRE">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>DRE Resultado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #007bff;
+            padding: 10px 20px;
+            display: flex;
+            gap: 15px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            width: 900px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #cccccc;
+            padding: 8px;
+            text-align: right;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        td.conta {
+            text-align: left;
+        }
+        ul {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="/">🏠 Home / Filtro</a>
+        <a href="/dre_anual">📊 DRE Anual Consolidada</a>
+        <a href="/export_excel">📥 Exportar Excel</a>
+        <a href="/export_pdf">📄 Exportar PDF</a>
+    </div>
+
+    <div class="container">
+        <h1>DRE - {{mes}}/{{ano}} - Nível {{nivel}}</h1>
+
+        <table>
+            <tr>
+                <th>Código</th>
+                <th>Conta</th>
+                <th>Valor (R$)</th>
+            </tr>
+            {% for linha in dre %}
+            <tr>
+                <td>{{ linha['Código_Conta'] }}</td>
+                <td class="conta">{{ linha['Conta'] }}</td>
+                <td>{{ "{:,.2f}".format(linha['Valor']).replace(",", "X").replace(".", ",").replace("X", ".") }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h2>Indicadores Financeiros</h2>
+        <ul>
+            {% for nome, valor in indicadores.items() %}
+            <li><strong>{{ nome }}:</strong> {{ "%.2f" | format(valor) }}%</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>
